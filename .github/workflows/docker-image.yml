@@ -26,8 +26,8 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_HUB_USERNAME}}/whaledemo:$TAG
+      run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_HUB_USERNAME}}/whaledemo:${{env.TAG}}
       
     - name: Docker Push
-      run: docker push ${{secrets.DOCKER_HUB_USERNAME}}/whaledemo:$TAG
+      run: docker push ${{secrets.DOCKER_HUB_USERNAME}}/whaledemo:${{env.TAG}}
 
