@@ -7,16 +7,17 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
-env:
-  TAG: $(date +%s)
 jobs:
-
   build:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: set release date
+      run: |
+        echo "TAG=$(date +%s)" >> ${GITHUB_ENV}
     
     - name: docker login
       env:
