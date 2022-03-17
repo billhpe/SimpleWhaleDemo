@@ -22,7 +22,7 @@ jobs:
       run:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag bxj/simplewhaledemo:$(date +%s)
+      run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_HUB_USERNAME}}/whaledemo:$(date +%s)
     - name: Docker Push
-      run: docker push billhpe/whaledemo:$(date +%s)
+      run: docker push ${{secrets.DOCKER_HUB_USERNAME}}/whaledemo:$(date +%s)
 
